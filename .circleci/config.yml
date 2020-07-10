@@ -11,13 +11,15 @@ jobs:
   build-and-test:
     executor:
       name: node/default
+
     steps:
       - checkout
       - node/with-cache:
           steps:
             - run: npm install
+            - run: npm run build
             - run: npm test
-            
+
 workflows:
     build-and-test:
       jobs:
